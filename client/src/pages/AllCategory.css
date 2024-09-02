@@ -1,0 +1,4 @@
+.hehe:hover{
+    border: 10px solid silver;
+    transition: 0.4s ease;
+}
