@@ -15,7 +15,6 @@ const AllCategory = () => {
                 setCategories(data.category);
             }
         } catch (error) {
-            console.log(error);
             toast.error('Error getting category');
         }
     };

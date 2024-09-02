@@ -15,7 +15,6 @@ const Products = () => {
           setProducts(data?.products)
         }
         catch(error){
-          console.log(error)
           toast.error('error getting products')
         }
        }
@@ -35,7 +34,6 @@ const Products = () => {
         toast.error(data.message || 'Failed to delete product');
       }
     } catch (error) {
-      console.error('Error deleting product:', error);
       toast.error('Something went wrong while deleting the product');
     }
   };

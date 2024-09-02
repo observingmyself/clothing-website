@@ -12,7 +12,6 @@ const Queries = () => {
             setQueries(data?.contact);
             toast.success(data.message);
         } catch (error) {
-            console.error(error);
             toast.error('Error Getting Queries');
         }
     };
@@ -29,7 +28,6 @@ const Queries = () => {
                 getAllQueries()
             }
         }catch(error){
-            console.log(error)
             toast.error("Failed to delete query")
         }
     }

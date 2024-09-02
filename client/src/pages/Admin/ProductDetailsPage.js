@@ -11,7 +11,6 @@ const ProductDetailsPage = () => {
     const [name,setName] = useState('')
     const [description,setDescription] = useState('')
     const [price, setPrice] = useState('')
-    const [photo, setPhoto] = useState('')
     const [id,setId] = useState('')
     const [cart,setCart] = useCart([])
     const [product,setProduct] = useState([])
@@ -25,11 +24,9 @@ const ProductDetailsPage = () => {
                 setPrice(data.product.price)
                 setId(data.product._id)
                 setProduct(data.product)
-                console.log(id)
             }
         }
         catch(error){
-            console.log(error)
             toast.error("Failed to get product")
         }
     }

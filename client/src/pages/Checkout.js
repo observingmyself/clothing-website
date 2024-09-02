@@ -24,7 +24,6 @@ const Checkout = () => {
       const {data} = await axios.get("/api/v1/product/braintree/token")
       setClientToken(data?.clientToken)
     }catch(error){
-      console.log(error)
     }
   }
   useEffect(()=>{
@@ -46,7 +45,6 @@ const Checkout = () => {
 
       }
     }catch(error){
-      console.log(error)
       toast.error("Failed to place order")
     }
   }

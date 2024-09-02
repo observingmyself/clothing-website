@@ -17,7 +17,6 @@ const FilterProducts = () => {
         setProducts(data.product)
       }
     }catch(error){
-      console.log(error)
       toast.error("Error in getting products")
     }
   }

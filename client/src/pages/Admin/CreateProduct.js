@@ -25,7 +25,6 @@ const CreateProduct = () => {
       }
     }
     catch(error){
-      console.log(error)
       toast.error("failed to get categories")
     }
   }
@@ -57,7 +56,6 @@ const CreateProduct = () => {
       }
     }
     catch(error){
-      console.log(error)
     }
    }
 

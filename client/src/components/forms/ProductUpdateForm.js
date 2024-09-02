@@ -19,7 +19,6 @@ const ProductUpdateForm = () => {
     const [shipping,setShipping] = useState("")
     // const[id,setId] = useState("")
 
-    console.log(params)
     // getting categories 
     const getAllCategories = async() =>{
       try{
@@ -29,7 +28,6 @@ const ProductUpdateForm = () => {
         }
       }
       catch(error){
-        console.log(error)
         toast.error("failed to get categories")
       }
     }
@@ -42,7 +40,6 @@ const ProductUpdateForm = () => {
         const { data } = await axios.get(`/api/v1/product/get-product/${params.id}`)
         if(data?.success){
         // const product = data.product;
-        console.log(data.product)
         // setName(product.name)
         // setDescription(product.description)
         // setPrice(product.price)
@@ -54,7 +51,6 @@ const ProductUpdateForm = () => {
         }
       }
       catch(error){
-        console.log(error)
       }
     }
 
@@ -84,7 +80,6 @@ const ProductUpdateForm = () => {
       }
       }
       catch(error){
-        console.log(error)
         toast.error("Failed to update product")
       }
     }

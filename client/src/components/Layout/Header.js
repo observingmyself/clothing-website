@@ -26,7 +26,6 @@ const Header = () => {
         setCategories(data.category);
       }
     }catch(error){
-      console.log(error)
       toast.error("Failed to get categories")
     }
   }

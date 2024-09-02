@@ -15,7 +15,6 @@ const SearchInput = () => {
             navigate('/search')
         }
         catch(error){
-            console.log(error)
         }
     }
   return (
