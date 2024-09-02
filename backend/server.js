@@ -8,7 +8,7 @@ import categoryRoutes from "./routes/categoryRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 import contactRoute from "./routes/contactRoute.js";
 import { checkoutController } from "./controllers/checkoutController.js";
-
+import path from 'path'
 
 //configure env
 dotenv.config();
@@ -31,10 +31,24 @@ app.use("/api/v1/category", categoryRoutes)
 app.use("/api/v1/product", productRoutes)
 app.use("/api/v1/contact",contactRoute)
 app.use("/api/v1/checkout",checkoutController)
+
+// --------------------------deployment
+const _dirname1 = path.resolve();
+if(process.env.NODE_ENV === 'production'){
+app.use(express.static(path.join(_dirname1,"../client/build")));
+app.get('*',(req,res)=>{
+  res.sendFile(path.resolve(_dirname1,"client","build","index.html"))
+})
+
+}else{
+  app.get("/", (req, res) => {
+    res.send("<h1>Welcome to ecommerce app</h1>");
+  });
+}
+// --------------------------deployment
+
 //rest api
-app.get("/", (req, res) => {
-  res.send("<h1>Welcome to ecommerce app</h1>");
-});
+
 
 
 //PORT
