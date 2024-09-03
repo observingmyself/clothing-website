@@ -88,7 +88,7 @@ const filterproducts = async () =>{
       <div className="container-fluid row mt-3">
         <div className="col-md-2">
           <h4 className="m-1">Filter By Category</h4>
-          <div className="d-flex flex-column">
+          <div className="d-flex flex-column justify-content-center">
             {categories?.map((c)=>(
               <Checkbox className="m-1" key={c._id} onChange={(e)=>handleFilter(e.target.checked,c._id)}>{c.name}</Checkbox>
             ))}
