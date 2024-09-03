@@ -69,8 +69,7 @@ const ProductDetailsPage = () => {
               <button className='btn btn-success py-2' style={{marginRight : '8px'}}>M</button>
               <button className='btn btn-success py-2' style={{marginRight : '8px'}}>L</button>
               <button className='btn btn-success py-2' style={{marginRight : '8px'}}>XL</button>
-              <button className='btn btn-success py-2' style={{marginRight : '8px'}}>2XL</button>
-              <button className='btn btn-success py-2' style={{marginRight : '8px'}}>3XL</button>
+             
             </div>
             <button className='btn btn-danger py-2 px-4' style={{borderRadius : '30px'}} onClick={()=>{setCart([...cart,product]);
                         localStorage.setItem("cart",JSON.stringify([...cart,product]));
