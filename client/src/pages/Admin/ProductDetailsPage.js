@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { useNavigate, useParams } from 'react-router-dom'
+import './ProductDetails.css'
 import Layout from '../../components/Layout/Layout'
 import { useCart } from '../../context/cartContext'
 
@@ -39,12 +40,12 @@ const ProductDetailsPage = () => {
       <div className='container'>
         <div className='row'>
           <div className='col-md-6 d-flex justify-content-center'>
-            <div className='d-flex mt-4 flex-column justify-content-center image-container' style={{marginRight : '10px'}}>
+          {/* <div className='d-flex mt-4 flex-column justify-content-center image-container' style={{marginRight : '10px'}}>
               <img src={`/api/v1/product/product-photo/${id}`} className="img img-responsive mb-1" style={{height : '100px'}}/>
               <img src={`/api/v1/product/product-photo/${id}`} className="img img-responsive mb-1" style={{height : '100px'}}/>
               <img src={`/api/v1/product/product-photo/${id}`} className="img img-responsive mb-1" style={{height : '100px'}}/>
               <img src={`/api/v1/product/product-photo/${id}`} className="img img-responsive mb-1" style={{height : '100px'}}/>
-            </div>
+            </div> */}
             <img src={`/api/v1/product/product-photo/${id}`} className='img img-responsive mt-4' alt={name} />
           </div>
           <div className='col-md-6 mt-5'>
