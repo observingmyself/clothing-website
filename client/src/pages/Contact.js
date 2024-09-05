@@ -27,8 +27,9 @@ const Contact = () => {
   }
   return (
     <Layout title={"Contact us"}>
-      <div className="row contactus ">
-        <div className="col-md-6 ">
+      <div className="container-fluid">
+      <div className="row contactus">
+        <div className="col-md-6 mt-sm-3">
           <img
             src="/images/contactus.jpeg"
             alt="contactus"
@@ -54,7 +55,9 @@ const Contact = () => {
             <textarea className="form-control mb-2" value={search} onChange={(e)=>setSearch(e.target.value)} type="text" placeholder="Enter your Query :" rows={2} cols={4}/>
             <input type="number" className="form-control" value={phone} onChange={(e)=>setPhone(e.target.value)} placeholder="Enter Your Number :"/>
             <button type="submit" className="btn btn-dark mt-2" onClick={handleSubmit}>Submit Query</button>
+           
           </form>
+        </div>
         </div>
       </div>
     </Layout>

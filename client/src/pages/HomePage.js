@@ -104,7 +104,7 @@ const filterproducts = async () =>{
             </Radio.Group>
           </div>
         </div>
-          <div className="col-md-10">
+          <div className="col-md-10 mt-4">
             <h1 className="text-center">All Products</h1>
             <div className="d-flex flex-wrap">
                 {products?.map((p)=>(
