@@ -106,7 +106,7 @@ const filterproducts = async () =>{
         </div>
           <div className="col-md-10 mt-4">
             <h1 className="text-center">All Products</h1>
-            <div className="d-flex flex-wrap">
+            <div className="d-flex flex-wrap justify-content-center">
                 {products?.map((p)=>(
                   <div className="card mx-2 my-3" style={{width : "18rem"}}>
                     <img src={`/api/v1/product/product-photo/${p._id}`} onClick={()=>navigate(`/product-detail/${p.slug}`)} className="card-img-top" alt={p.name}/>
