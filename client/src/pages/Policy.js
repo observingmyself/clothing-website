@@ -12,7 +12,7 @@ const Policy = () => {
             style={{ width: "100%" }}
           />
         </div>
-        <div className="col-md-4">
+        <div className="col-md-4 PolicyPage">
           <h1 className="text-center fw-bold">Privacy Policy</h1>
           <ul className="mt-3">
             <li>

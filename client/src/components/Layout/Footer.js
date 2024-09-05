@@ -25,6 +25,15 @@ const Footer = () => {
         `}
         
       </style>
+      <style jsx>
+          {`
+          @media(max-width:500px){
+          .footer{
+          margin-top : 300px;
+          }
+          }
+          `}
+        </style>
       <h1 className="text-center">All Right Reserved &copy; PardeepWeb</h1>
       <p className="text-center mt-3">
         <Link to="/about">About</Link>|<Link to="/contact">Contact</Link>|
