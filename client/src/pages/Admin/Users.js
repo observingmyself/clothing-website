@@ -29,7 +29,7 @@ const Users = () => {
           </div>
           <div className="col-md-9">
             <h1>All Users</h1>
-            <div className="mt-4 col-6">
+            <div className="mt-4 col-12 col-md-6">
               {users.map((info)=>(
              info.role != 1 ? (<>
               <div key={info._id} className="mt-2 border border-secondary p-3">
