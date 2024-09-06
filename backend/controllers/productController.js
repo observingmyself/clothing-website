@@ -195,7 +195,7 @@ export const getProductController = async (req, res) => {
   // update controller 
 
   export const updateProductController = async (req, res) => {
-    const { id } = req.params;
+    const { id } = req.params.id;
     if (!id) {
       console.error("Id not found");
       return res.status(400).send({

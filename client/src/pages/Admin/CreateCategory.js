@@ -99,7 +99,7 @@ const CreateCategory = () => {
                 setValue={setName}
               />
             </div>
-            <div className="w-75">
+            <div className="col-12 col-md-6">
               <table className="table">
                 <thead>
                   <tr>

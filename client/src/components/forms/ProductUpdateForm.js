@@ -8,7 +8,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 const {Option} = Select;
 const ProductUpdateForm = () => {
     const params = useParams();
-    const navigate = useNavigate()
+    // console.log(params.id)
+    const navigate = useNavigate();
     const [name , setName] = useState('')
     const [description,setDescription] = useState("");
     const [price,setPrice] = useState("")
@@ -17,7 +18,7 @@ const ProductUpdateForm = () => {
     const [category,setCategory] = useState('');
     const [quantity,setQuantity] = useState('')
     const [shipping,setShipping] = useState("")
-    // const[id,setId] = useState("")
+    const[id,setId] = useState("")
 
     // getting categories 
     const getAllCategories = async() =>{
@@ -39,15 +40,17 @@ const ProductUpdateForm = () => {
       try{
         const { data } = await axios.get(`/api/v1/product/get-product/${params.id}`)
         if(data?.success){
-        // const product = data.product;
-        // setName(product.name)
-        // setDescription(product.description)
-        // setPrice(product.price)
-        // setPhoto(product.photo)
-        // setQuantity(product.quantity)
-        // setShipping(product.shipping)
-        // setCategory(product.category)
-        // setId(product._id)
+        const product = data.product;
+        // console.log(product)
+        setName(product.name)
+        setDescription(product.description)
+        setPrice(product.price)
+        setPhoto(product.photo)
+        setQuantity(product.quantity)
+        setShipping(product.shipping)
+        setCategory(product.category)
+        setId(product._id)
+        console.log(id)
         }
       }
       catch(error){
@@ -70,7 +73,7 @@ const ProductUpdateForm = () => {
         productUpdateData.append("category",category)
         productUpdateData.append("photo",photo)
 
-        const {data} = await axios.patch(`/api/v1/product/update-product/${params.slug}`,productUpdateData)
+        const {data} = await axios.patch(`/api/v1/product/update-product/${id}  `,productUpdateData)
         if(data?.success){
           toast.success("Product updated successfully")
           navigate('/dashboard/admin/products')
