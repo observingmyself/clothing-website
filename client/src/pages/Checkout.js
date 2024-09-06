@@ -17,12 +17,14 @@ const Checkout = () => {
   const [pincode, setPincode] = useState();
   const [cart,setCart] = useCart();
   const [clientToken, setClientToken] = useState("");
+  const [isLoading,setIsLoading] = useState(true);
   const [instance,setInstance] = useState("");
   
   const getToken = async() => {
     try{
       const {data} = await axios.get("/api/v1/product/braintree/token")
       setClientToken(data?.clientToken)
+      setIsLoading(false)
     }catch(error){
     }
   }
@@ -140,26 +142,35 @@ const Checkout = () => {
             </div>
           </div>
         <div className="mt-2">
-          {!clientToken || !auth.token || !cart.length ? ("Failed to load") : (
-            <>
-            <DropIn options={{
-              authorization : clientToken,
-              paypal : {
-                flow : "vault",
-
-              }
+        {isLoading ? (
+          <div className="d-flex justify-content-center mt-5">
+        <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      </div>
+      ) : (!clientToken || !auth.token || !cart.length ? (
+        "Failed to Load"
+      ) : (
+        <>
+          <DropIn
+            options={{
+              authorization: clientToken,
+              paypal: {
+                flow: "vault",
+              },
             }}
-            onInstance = {(instance)=>setInstance(instance)}/>
-            <button
-                  type="submit"
-                  onClick={handleSubmit}
-                  className="btn btn-primary py-2 px-3"
-                  style={{ borderRadius: "20px" }}
-                >
-                  Next Step
-                </button>
-                </>
-          )}
+            onInstance={(instance) => setInstance(instance)}
+          />
+          <button
+            type="submit"
+            onClick={handleSubmit}
+            className="btn btn-primary py-2 px-3"
+            style={{ borderRadius: "20px" }}
+          >
+            Next Step
+          </button>
+        </>
+      ))}
         </div>
         </div>
         </div>
