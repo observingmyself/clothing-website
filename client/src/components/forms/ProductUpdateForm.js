@@ -72,7 +72,11 @@ const ProductUpdateForm = () => {
         productUpdateData.append("category",category)
         photo && productUpdateData.append("photo",photo)
 
-        const {data} = axios.put(`/api/v1/product/update-product/${id}`,productUpdateData)
+        const { data } = await axios.put(`/api/v1/product/update-product/${id}`, productUpdateData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
         if(data?.success){  
             toast.success("Product updated successfully")
             navigate('/dashboard/admin/products')
