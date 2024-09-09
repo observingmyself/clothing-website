@@ -48,6 +48,13 @@ const CreateProduct = () => {
       const {data} = await axios.post("/api/v1/product/create-product",productData)
       if(data?.success){
         toast.success(data.message)
+        setName('')
+        setDescription('')
+        setPrice('')
+        setQuantity('')
+        setShipping('')
+        setPhoto('')
+        setCategory('')
       }
       else{
         toast.success("Product Created Successfully")
