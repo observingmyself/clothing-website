@@ -33,7 +33,7 @@ router.get("/filter-category/:slug",categoryFilterProduct)
 router.delete('/delete-product/:pid',deleteProductController)
 
 // update product
-router.patch('/update-product/:id',updateProductController)
+router.put('/update-product/:pid',requireSignIn,formidable(),isAdmin,updateProductController)
 
 // getting braintree tokren
 router.get('/braintree/token',braintreeTokenController)

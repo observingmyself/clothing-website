@@ -8,7 +8,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 const {Option} = Select;
 const ProductUpdateForm = () => {
     const params = useParams();
-    // console.log(params.id)
     const navigate = useNavigate();
     const [name , setName] = useState('')
     const [description,setDescription] = useState("");
@@ -71,19 +70,17 @@ const ProductUpdateForm = () => {
         productUpdateData.append("quantity",quantity)
         productUpdateData.append("shipping",shipping)
         productUpdateData.append("category",category)
-        productUpdateData.append("photo",photo)
+        photo && productUpdateData.append("photo",photo)
 
-        const {data} = await axios.patch(`/api/v1/product/update-product/${id}  `,productUpdateData)
-        if(data?.success){
-          toast.success("Product updated successfully")
-          navigate('/dashboard/admin/products')
+        const {data} = axios.put(`/api/v1/product/update-product/${id}`,productUpdateData)
+        if(data?.success){  
+            toast.success("Product updated successfully")
+            navigate('/dashboard/admin/products')
         }
-      else{
-        toast.error("Failed to update product")
-      }
+
       }
       catch(error){
-        toast.error("Failed to update product")
+        toast.error("Failed to up product")
       }
     }
     
@@ -95,7 +92,7 @@ const ProductUpdateForm = () => {
             <AdminMenu/>
           </div>
           <div className="col-md-9">
-            <h1>Create Product</h1>
+            <h1>Update Product</h1>
             <div className="m-1 w-75">
               <Select bordered={false} placeholder="Select Category" size ="large" slowsearch className="form-select mb-3" onChange={(value)=>{setCategory(value)}}>
               {categories?.map((c)=>{
@@ -108,19 +105,51 @@ const ProductUpdateForm = () => {
                   <input type="file" name="photo" accept="image/*" onChange={(e)=>setPhoto(e.target.files[0])} hidden/>
                 </label>
               </div>
-              <div className="mb-3">
-                 {photo && (
-                  <div className="text-center">
-                    <img
-                      src={URL.createObjectURL(photo)}
-                      alt="product_photo"
-                      height={"200px"}
-                      className="img img-responsive"
-                    />
-                  </div>
-                )}
+              <div className="mb-3 d-flex justify-content-around align-items-center">
 
-              </div>
+              <img src={`/api/v1/product/product-photo/${id}`} height={"200px"} alt="Product 1" />
+
+  {photo && (
+    <div className="update-info text-center">
+      <div className="arrow">
+        {/* You can use a Unicode arrow or an SVG for the arrow */}
+        <span>&rarr;</span>
+      </div>
+      <div className="text">Update to this</div>
+    </div>
+  )}
+          <style jsx>
+            {`
+            .update-info {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          font-family: Arial, sans-serif; /* Adjust as needed */
+        }
+
+        .arrow {
+          font-size: 24px; /* Adjust size as needed */
+          margin-bottom: 10px; /* Space between arrow and text */
+        }
+
+        .text {
+          font-size: 16px; /* Adjust size as needed */
+          font-weight: bold; /* Optional: make text bold */
+        }`}
+          </style>
+
+  {photo && (
+    <div className="text-center">
+      <img
+        src={URL.createObjectURL(photo)}
+        alt="product_photo"
+        height={"200px"}
+        className="img img-responsive"
+      />
+    </div>
+  )}
+</div>
+
               <div className="mb-3">
                 <input type="text" value={name} onChange={(e)=>setName(e.target.value)} className="form-control" placeholder="Product Name"/>
               </div>

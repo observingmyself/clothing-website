@@ -70,12 +70,12 @@ const CreateProduct = () => {
     <Layout title={"Dashboard - Create Product"}>
       <div className="container-fluid m-3 p-3">
         <div className="row">
-          <div className="col-md-3">
+          <div className="col-12 col-md-3">
             <AdminMenu/>
           </div>
-          <div className="col-md-9">
-            <h1>Create Product</h1>
-            <div className="m-1 w-75">
+          <div className="col-12 d-flex flex-column align-items-center col-md-9 px-5">
+            <h1 className="mt-3">Create Product</h1>
+            <div className="m-1 w-100">
               <Select bordered={false} placeholder="Select Category" size ="large" slowsearch className="form-select mb-3" onChange={(value)=>{setCategory(value)}}>
               {categories?.map((c)=>{
                 return <Option key={c._id} value={c._id}>{c.name}</Option>

@@ -195,45 +195,51 @@ export const getProductController = async (req, res) => {
   // update controller 
 
   export const updateProductController = async (req, res) => {
-    const { id } = req.params.id;
-    if (!id) {
-      console.error("Id not found");
-      return res.status(400).send({
-        success: false,
-        message: 'Product ID is required',
-      });
-    }
-  
     try {
-      console.log('Request body:', req.body); // Log the request body
-  
-      const update = await productModel.findByIdAndUpdate(
-        id,
-        { $set: req.body },
-        { new: true }
-      ).select('-photo');
-  
-      if (!update) {
-        return res.status(404).send({
-          success: false,
-          message: 'Unable to update product, product not found',
-        });
+      const { name, description, price, category, quantity, shipping } =
+        req.fields;
+      const { photo } = req.files;
+      //alidation
+      switch (true) {
+        case !name:
+          return res.status(500).send({ error: "Name is Required" });
+        case !description:
+          return res.status(500).send({ error: "Description is Required" });
+        case !price:
+          return res.status(500).send({ error: "Price is Required" });
+        case !category:
+          return res.status(500).send({ error: "Category is Required" });
+        case !quantity:
+          return res.status(500).send({ error: "Quantity is Required" });
+        case photo && photo.size > 1000000:
+          return res
+            .status(500)
+            .send({ error: "photo is Required and should be less then 1mb" });
       }
   
-      console.log('Updated product:', update); // Log the updated product
-  
-      return res.status(200).send({
+      const products = await productModel.findByIdAndUpdate(
+        req.params.pid,
+        { ...req.fields, slug: slugify(name) },
+        { new: true }
+      );
+      if (photo) {
+        products.photo.data = fs.readFileSync(photo.path);
+        products.photo.contentType = photo.type;
+      }
+      await products.save();  
+      res.status(201).send({
         success: true,
-        message: 'Product updated successfully',
-        product: update,
+        message: "Product Updated Successfully",
+        products,
       });
     } catch (error) {
-      console.error('Error during update:', error); // Log any error
-      return res.status(500).send({
+      console.log(error);
+      res.status(500).send({
         success: false,
-        message: 'Error while updating product',
-      });
-    }
+        error,
+        message: "Error in Updte product",
+      });
+    }
   };
 
   export const categoryFilterProduct = async(req,res) => {
