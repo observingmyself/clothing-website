@@ -6,6 +6,7 @@ import { Checkbox,Radio } from "antd";
 import { Prices } from "../components/Prices";
 import { useCart } from "../context/cartContext";
 import { useNavigate } from "react-router-dom";
+import './card.css'
 
 const HomePage = () => {
   const [cart,setCart] = useCart()
@@ -86,7 +87,7 @@ const filterproducts = async () =>{
   return (
     <Layout title={"Best offers "}>
       <div className="container-fluid row mt-3">
-        <div className="col-md-2">
+        <div className=" col-md-2">
           <h4 className="m-1">Filter By Category</h4>
           <div className="d-flex flex-column justify-content-center">
             {categories?.map((c)=>(
@@ -106,9 +107,9 @@ const filterproducts = async () =>{
         </div>
           <div className="col-md-10 mt-4">
             <h1 className="text-center">All Products</h1>
-            <div className="d-flex flex-wrap justify-content-right">
+            <div className="d-flex flex-wrap justify-content-center">
                 {products?.map((p)=>(
-                  <div className="card mx-2 my-3" style={{width : "18rem"}}>
+                  <div className="card border card-bnana border-none mx-2 my-3" style={{width : "18rem"}}>
                     <img src={`/api/v1/product/product-photo/${p._id}`} onClick={()=>navigate(`/product-detail/${p.slug}`)} className="card-img-top" alt={p.name}/>
                     <div className="card-body">
                       <h5 className="card-title">{p.name}</h5>

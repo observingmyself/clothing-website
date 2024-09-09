@@ -1,0 +1,6 @@
+.card-bnana{
+    transition: 0.1s ease-in;
+}
+.card-bnana:hover{
+    transform: scale(1.05);
+}

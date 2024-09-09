@@ -4,6 +4,7 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import AdminMenu from '../../components/Layout/AdminMenu'
 import { Link } from 'react-router-dom'
+import '../card.css'
 
 
 const Products = () => {
@@ -48,7 +49,7 @@ const Products = () => {
               <center>  <b className='h1 text-secondary' style={{borderBottom : "2px solid gray", paddingBottom : "2px"}}>All Products</b></center>
             <div className="d-flex flex-wrap mt-5">
                 {products?.map((p)=>(
-                  <div className="card mx-2 my-3" style={{width : "18rem"}}>
+                  <div className="card card-bnana mx-2 my-3" style={{width : "18rem"}}>
                     <img src={`/api/v1/product/product-photo/${p._id}`} className="card-img-top" alt={p.name}/>
                     <div className="card-body">
                       <h5 className="card-title">{p.name}</h5>

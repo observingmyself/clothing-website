@@ -3,6 +3,7 @@ import React from "react";
 import { useSearch } from "../context/searchcontext";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/cartContext";
+import './card.css'
 import toast from "react-hot-toast";
 const Search = () => {
   const [values] = useSearch();
@@ -30,9 +31,9 @@ const Search = () => {
               : `Found ${values?.results.length}`}
           </h6>
 
-          <div className="d-flex flex-wrap">
+          <div className="d-flex flex-wrap justify-content-center">
             {values.results?.map((p) => (
-              <div className="card mx-2 my-3" style={{ width: "18rem" }}>
+              <div className="card card-bnana mx-2 my-3" style={{ width: "18rem" }}>
                 <img
                   src={`/api/v1/product/product-photo/${p._id}`}
                   onClick={()=>navigate(`/product-detail/${p.slug}`)}
